@@ -1,0 +1,61 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.7fr 2fr 1fr 1.3fr;
+  height: 100%;
+}
+
+.header
+{
+ grid-row: 1/1;
+ text-align: center;
+ background-color: black;
+ color: white;
+
+}
+
+.game
+{
+  
+  grid-row: 2/2;
+  text-align: center;
+  padding-top: 7%;
+}
+
+.word{
+  padding-bottom: 10px;
+}
+.input{
+  padding-top: 50px
+}
+
+.buttons
+{
+  grid-row: 3/3;
+}
+
+.playable
+{
+  display: flex;
+  justify-content: center;
+  column-gap: 25%;
+}
+
+.ending{
+  padding-top: 100px;
+  text-align: center;
+}
+
+.footer
+{
+  grid-row: 4/4;
+  text-align: center;
+  background-color: gray;
+}
