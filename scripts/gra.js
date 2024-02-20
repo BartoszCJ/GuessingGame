@@ -41,6 +41,9 @@ document.getElementById('wpisGracza').addEventListener('keypress', (e) =>
         {
           console.log('ELO');
           console.log(userInput);
+          document.querySelector()
+
+          
         }
       }
   }
