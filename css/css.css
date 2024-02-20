@@ -31,9 +31,17 @@ body, html {
 
 .word{
   padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  
 }
 .input{
   padding-top: 50px
+}
+
+.wyrazdozgadcss{
+  width: 15px;
 }
 
 .buttons
