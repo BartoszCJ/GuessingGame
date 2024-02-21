@@ -1,5 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
 
+html,
+body,
+.page,
+.footer {
+  height: 100%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page,
+.footer {
+  margin: 0;
+  padding: 0;
+}
+
 body,
 html {
   margin: 0;
@@ -10,14 +28,14 @@ html {
 }
 
 .page {
+  min-height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.7fr 2fr 1fr 1.3fr;
-  height: 100%;
+  grid-template-rows: 0.7fr 2fr 1fr 1fr;
 }
 
 .header {
-  background-color: rgb(48, 51, 51);
+  background-color: gray;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,9 +123,9 @@ html {
 }
 
 .zacznij {
-  background-color: #197219;
+  background-color: #50b649;
   width: 100px;
-  border-radius: 50px;
+  border-radius: 20px;
   border-color: black;
   border-width: 3px;
   height: 60px;
@@ -120,14 +138,14 @@ html {
 }
 
 .zacznij:hover {
-  background-color: #4ecf03;
+  background-color: #63da5a;
   transition: background-color 0.2s ease;
 }
 
 .stop {
-  background-color: rgb(145, 2, 2);
+  background-color: #af49b6;
   width: 100px;
-  border-radius: 50px;
+  border-radius: 20px;
   border-color: black;
   border-width: 3px;
   height: 60px;
@@ -139,7 +157,7 @@ html {
 }
 
 .stop:hover {
-  background-color: red;
+  background-color: #db5ce4;
   transition: background-color 0.5s ease;
 }
 
@@ -164,8 +182,73 @@ html {
 
 .footer {
   grid-row: 4/4;
+  margin-top: 135px;
+  width: 100%;
+  position: relative;
   text-align: center;
   background-color: gray;
-  height: 100%;
-  margin-top: 60px;
+}
+
+.jeszcze {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91c9ff;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  transition: 1s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.jeszcze:hover {
+  transition: 1s ease-in-out;
+  background: #4f95da;
+}
+
+.jeszcze:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.jeszcze span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.feedback {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pomoc {
+  margin: 0;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  top: 89%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  border-color: white;
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: dotted;
+  padding: 8px 10px 8px 10px;
 }

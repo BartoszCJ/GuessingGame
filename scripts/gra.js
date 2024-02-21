@@ -7,6 +7,7 @@ let graHTML = "";
 let licznik = 0;
 let aktualneSlowo = "";
 let userInput;
+let aktualneSlowoTablica = [];
 let randomWyrazTablica = Array.from(randomWyraz);
 console.log(randomWyrazTablica);
 
@@ -26,6 +27,7 @@ document.getElementById("zacznij").addEventListener("click", () => {
     getWyraz();
     licznik = 0;
     aktualneSlowo = "";
+    aktualneSlowoTablica = [];
     randomWyrazTablica = Array.from(randomWyraz);
     generujInputy();
     granie = 1;
@@ -36,7 +38,7 @@ document.getElementById("zacznij").addEventListener("click", () => {
     document.getElementById("zacznij").value = "Start";
     document.getElementById("zacznij").className = "zacznij";
     console.log("Gra zatrzymana");
-
+    aktualneSlowoTablica = [];
     document.querySelector(".js-gra").innerHTML = "";
     document.querySelector(
       ".js-gra"
@@ -49,6 +51,7 @@ document.getElementById("zacznij").addEventListener("click", () => {
 document.getElementById("wpisGracza").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     licznik++;
+    document.querySelector(".feedback").innerHTML = `Licznik: ${licznik}`;
     userInput = e.target.value.trim();
     console.log(licznik);
 
@@ -69,9 +72,12 @@ function updateDisplay() {
   for (let i = 0; i < randomWyrazTablica.length; i++) {
     if (randomWyrazTablica[i] === userInput) {
       aktualneSlowo += userInput;
+      aktualneSlowoTablica[i] = userInput;
       document.getElementById(`input-${i}`).value = userInput;
       document.getElementById(`input-${i}`).classList.add(`poprawne`);
       console.log(aktualneSlowo);
+      console.log(aktualneSlowoTablica);
+      console.log(randomWyrazTablica);
     }
   }
 }
@@ -81,6 +87,7 @@ document.getElementById("jeszcze-raz").addEventListener("click", () => {
     graHTML = "";
     getWyraz();
     licznik = 0;
+    aktualneSlowoTablica = [];
     aktualneSlowo = "";
     randomWyrazTablica = Array.from(randomWyraz);
     generujInputy();
@@ -89,3 +96,21 @@ document.getElementById("jeszcze-raz").addEventListener("click", () => {
     alert("Gra nie została jeszcze rozpoczęta!");
   }
 });
+
+setInterval(() => {
+  if (
+    randomWyrazTablica.every(
+      (element, index) => element === aktualneSlowoTablica[index]
+    )
+  ) {
+    alert(`Wygrales w ${licznik} ruchach.`);
+    graHTML = "";
+    getWyraz();
+    licznik = 0;
+    aktualneSlowoTablica = [];
+    aktualneSlowo = "";
+    aktualneSlowoTablica = [];
+    randomWyrazTablica = Array.from(randomWyraz);
+    generujInputy();
+  }
+}, 1000);
