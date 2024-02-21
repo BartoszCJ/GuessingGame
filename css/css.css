@@ -1,69 +1,171 @@
-body, html {
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
+
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: "Asap", sans-serif;
+  background-color: #fdfdfe;
 }
 
-.page
-{
+.page {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.7fr 2fr 1fr 1.3fr;
   height: 100%;
 }
 
-.header
-{
- grid-row: 1/1;
- text-align: center;
- background-color: black;
- color: white;
-
+.header {
+  background-color: rgb(48, 51, 51);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
-.game
-{
-  
+.tytul {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  padding-bottom: 20px;
+}
+
+.ikonka {
+  margin-left: auto;
+  padding-right: 50px;
+  color: beige;
+}
+.game {
   grid-row: 2/2;
   text-align: center;
-  padding-top: 7%;
-}
-
-.word{
-  padding-bottom: 10px;
-  display: flex;
   justify-content: center;
-  column-gap: 10px;
-  
-}
-.input{
-  padding-top: 50px
+  padding-top: 7%;
+  background-color: #dbe0e0;
 }
 
-.wyrazdozgadcss{
-  width: 15px;
-}
-
-.buttons
-{
-  grid-row: 3/3;
-}
-
-.playable
-{
+.playable {
   display: flex;
   justify-content: center;
   column-gap: 25%;
 }
 
-.ending{
+.word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+
+  column-gap: 10px;
+}
+
+.wyraz {
+  font-size: 38px;
+  text-align: center;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    #553c9a,
+    #ee4b2b,
+    #00c2cb,
+    #ff7f50,
+    #553c9a
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 200%;
+  background-position: -200%;
+  animation: animated-gradient 2s infinite alternate-reverse;
+}
+@keyframes animated-gradient {
+  to {
+    background-position: 200%;
+  }
+}
+
+.input {
+  display: flex;
+  padding-top: 65px;
+  justify-content: center;
+}
+.input-gracz {
+  width: 40px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.wyrazdozgadcss {
+  font-size: large;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.zacznij {
+  background-color: #197219;
+  width: 100px;
+  border-radius: 50px;
+  border-color: black;
+  border-width: 3px;
+  height: 60px;
+  font-weight: bold;
+  color: white;
+
+  font-size: 22px;
+  text-shadow: 2px 2px black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.zacznij:hover {
+  background-color: #4ecf03;
+  transition: background-color 0.2s ease;
+}
+
+.stop {
+  background-color: rgb(145, 2, 2);
+  width: 100px;
+  border-radius: 50px;
+  border-color: black;
+  border-width: 3px;
+  height: 60px;
+  font-weight: bold;
+  color: white;
+  font-size: 22px;
+  text-shadow: 2px 2px black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stop:hover {
+  background-color: red;
+  transition: background-color 0.5s ease;
+}
+
+.buttons {
+  grid-row: 3/3;
+  background-color: #dbe0e0;
+}
+
+.poprawne {
+  background-color: rgb(1, 241, 1);
+  border-color: black;
+  font-weight: bold;
+  border-width: 3px;
+  transition: background-color 2s ease, border-color 2s ease,
+    border-width 1s ease;
+}
+
+.ending {
   padding-top: 100px;
   text-align: center;
 }
 
-.footer
-{
+.footer {
   grid-row: 4/4;
   text-align: center;
   background-color: gray;
+  height: 100%;
+  margin-top: 60px;
 }

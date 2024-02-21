@@ -3,48 +3,89 @@ import { getWyraz, randomWyraz } from "./data.js";
 getWyraz();
 
 let granie = 0;
-let graHTML = '';
+let graHTML = "";
+let licznik = 0;
+let aktualneSlowo = "";
+let userInput;
 let randomWyrazTablica = Array.from(randomWyraz);
 console.log(randomWyrazTablica);
 
-
+function generujInputy() {
+  let i = 0;
+  let j = 0;
+  let k = 0;
+  randomWyrazTablica.forEach(() => {
+    graHTML += `<div class="js-wpisz-${i++}"> <input type="text" class="wyrazdozgadcss js-input-wpis-${j++}" id="input-${k++}"></div>`;
+  });
+  document.querySelector(".js-gra").innerHTML = graHTML;
+}
 
 //Pobierz wyraz i wygeneruj inputy sprawdz czy gra trwa
-document.getElementById('zacznij').addEventListener("click", ()=>
-{
-  if( granie === 0 )
-    {
-    let i,j = 0;
-    randomWyrazTablica.forEach(()=>
-      {
-        graHTML += `<div class="js-wpisz-${i++}"> <input type="text" class="wyrazdozgadcss js-input-wpis-${j++}"></div>`
-        document.querySelector('.js-gra').innerHTML = graHTML;
-        granie = 1;
-      });
-    }
-  else
-    {
-      alert('gra trwa!')
-    }
+document.getElementById("zacznij").addEventListener("click", () => {
+  if (granie === 0) {
+    getWyraz();
+    licznik = 0;
+    aktualneSlowo = "";
+    randomWyrazTablica = Array.from(randomWyraz);
+    generujInputy();
+    granie = 1;
+    document.getElementById("zacznij").value = "Stop";
+    document.getElementById("zacznij").className = "stop"; // Zaktualizuj wartość przycisku
+  } else {
+    granie = 0;
+    document.getElementById("zacznij").value = "Start";
+    document.getElementById("zacznij").className = "zacznij";
+    console.log("Gra zatrzymana");
+
+    document.querySelector(".js-gra").innerHTML = "";
+    document.querySelector(
+      ".js-gra"
+    ).innerHTML = `<div class="word js-gra wyraz">Wylosuj słowo do zgadnięcia</div>`;
+    graHTML = "";
+    aktualneSlowo = "";
+  }
 });
 
+document.getElementById("wpisGracza").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    licznik++;
+    userInput = e.target.value.trim();
+    console.log(licznik);
 
-document.getElementById('wpisGracza').addEventListener('keypress', (e) =>
-{
-  if (e.key === 'Enter')
-  {
-    let userInput = e.target.value.trim();
-    console.log("SADAS")
-    for(let i = 0; i<randomWyrazTablica.length;i++)
-      {
-        if(randomWyrazTablica[i] === userInput) 
-        {
-          console.log('ELO');
-          console.log(userInput);
-          document.querySelector()
-
-          
-        }
+    if (randomWyraz.includes(userInput)) {
+      if (aktualneSlowo.includes(userInput)) {
+        console.log(`To juz bylo !`);
+      } else {
+        updateDisplay();
       }
+    } else {
+      console.log(`nie ma`);
+    }
   }
-})
+});
+
+//sprawdz czy w inpucie jest to samo slowo i je dodaj
+function updateDisplay() {
+  for (let i = 0; i < randomWyrazTablica.length; i++) {
+    if (randomWyrazTablica[i] === userInput) {
+      aktualneSlowo += userInput;
+      document.getElementById(`input-${i}`).value = userInput;
+      document.getElementById(`input-${i}`).classList.add(`poprawne`);
+      console.log(aktualneSlowo);
+    }
+  }
+}
+
+document.getElementById("jeszcze-raz").addEventListener("click", () => {
+  if (granie === 1) {
+    graHTML = "";
+    getWyraz();
+    licznik = 0;
+    aktualneSlowo = "";
+    randomWyrazTablica = Array.from(randomWyraz);
+    generujInputy();
+    console.log(randomWyrazTablica);
+  } else {
+    alert("Gra nie została jeszcze rozpoczęta!");
+  }
+});

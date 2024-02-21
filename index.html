@@ -1,48 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Guessing game</title>
-<link rel="stylesheet" type="text/css" href="css/css.css"/>
 
+<head>
+  <title>Guessing game</title>
+  <link rel="stylesheet" type="text/css" href="css/css.css" />
 </head>
 
-
 <body>
-<div class="page">
-  <div class="header">
-    Guessing game
-  </div>
-
-  <div class="game">
-
-      <div class="word js-gra">
-        SŁOWO DO ZGADNIECIA
+  <div class="page">
+    <div class="header">
+      <div class="tytul">
+        <h1>Zgadnij słowo</h1>
       </div>
+      <div class="ikonka">elo</div>
+    </div>
+
+    <div class="game">
+      <div class="word js-gra wyraz">Wylosuj słowo do zgadnięcia</div>
 
       <div class="input">
-        <input id="wpisGracza" type="text" value="asd">
+        <input id="wpisGracza" type="text" value="asd" class="input-gracz" />
       </div>
-  </div>
-<div class="buttons">  
-  <div class="playable"> 
-    <div>
-      <input type="button" value="Zacznij" id="zacznij"> 
     </div>
-    <div>
-      <input type="button" value="Wylosuj jeszcze raz"> 
+    <div class="buttons">
+      <div class="playable">
+        <div>
+          <input type="button" class="zacznij" value="Start" id="zacznij" />
+        </div>
+        <div>
+          <input type="button" value="Wylosuj jeszcze raz" id="jeszcze-raz" />
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="feedback">tuuuu</div>
+      </div>
     </div>
   </div>
-
-  <div class="ending"><input type="button" value="Zakoncz"></div>
-</div>
-
-  <div class="footer">
-    <div class="feedback">tuuuu</div>
-  </div>
-
-</div>
-
-<script src="scripts/gra.js" type="module"></script>
-
+  <script src="scripts/gra.js" type="module"></script>
 </body>
-</html>
